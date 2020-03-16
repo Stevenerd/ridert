@@ -53,37 +53,47 @@ contract RideArt =
 `;
 
 function rideDom(name,email,mobile,location,destination,rideid){
-  let allRides=document.getElementById("book-a-ride-form");
+  let allRides=document.getElementById("ride-dom");
 
-  let newRideDiv=document.createElement("div");
-  newRideDiv.classList.add("ride");
+  let card=document.createElement("div");
+  card.classList.add("card");
 
-  let rideFirstNameParagraph=document.createElement("p");
-  rideFirstNameParagraph.innerText=firstname;
+  let cardBody=document.createElement("div");
+  cardBody.classList.add("card-body");
 
-  let rideSurnameParagraph=document.createElement("p");
-  rideSurnameParagraph.innerText=surname;
+  let rideIdText=document.createElement("h5");
+  rideIdText.innerText="<b>Ride Id<b>: " + rideid;
 
-  let rideEmailParagraph=document.createElement("p");
-  rideEmailParagraph.innerText=email;
+  let nameText=document.createElement("p");
+  nameText.innerText="<b>Name<b>: " + name;
 
-  let rideMobileParagraph=document.createElement("p");
-  rideMobileParagraph.innerText=mobile;
+  let emailText=document.createElement("p");
+  emailText.innerText="<b>Email<b>: " + email;
 
-  let rideLocationParagraph=document.createElement("p");
-  rideLocationParagraph.innerText=location;
+  let mobileText=document.createElement("p");
+  mobileText.innerText="<b>Mobile<b>: " + mobile;
 
-  let rideDestinationParagraph=document.createElement("p");
-  rideDestinationParagraph.innerText=destination;
+  let locationText=document.createElement("p");
+  locationText.innerText="<b>Location<b>: " + location;
 
-  newRideDiv.appendChild(rideFirstNameParagraph);
-  newRideDiv.appendChild(rideSurnameParagraph);
-  newRideDiv.appendChild(rideEmailParagraph);
-  newRideDiv.appendChild(rideMobileParagraph);
-  newRideDiv.appendChild(rideLocationParagraph);
-  newRideDiv.appendChild(rideDestinationParagraph);
+  let destinationText=document.createElement("p");
+  destinationText.innerText="<b>Destination<b>: " + destination;
+
+  cardBody
+  .appendChild(rideIdText);
+  cardBody
+  .appendChild(nameText);
+  cardBody
+  .appendChild(emailText);
+  cardBody
+  .appendChild(mobileText);
+  cardBody
+  .appendChild(locationText);
+  cardBody
+  .appendChild(destinationText);
   
-  allRides.appendChild(newRideDiv);
+  card.appendChild(cardBody);
+  allRides.appendChild(card);
 }
 
 window.addEventListener('load',async function(){
@@ -91,12 +101,12 @@ window.addEventListener('load',async function(){
   contractInstance=await client.getContractInstance(contractSource,{contractAddress});
 
   let myRides=(await contractInstance.methods.getUserRides()).decodedResult;
-  let allRides=(await contractInstance.methods.getRides()).decodedResult;
+  // let allRides=(await contractInstance.methods.getRides()).decodedResult;
   
   myRides.map(ride=>{ 
     rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
   });
-  allRides.map(ride=>{ 
+  // allRides.map(ride=>{ 
     rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
   });
 });
