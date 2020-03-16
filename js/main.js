@@ -107,8 +107,8 @@ window.addEventListener('load',async function(){
     rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
   });
   // allRides.map(ride=>{ 
-    rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
-  });
+  //   rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
+  // });
 });
 
 async function newRide(){
