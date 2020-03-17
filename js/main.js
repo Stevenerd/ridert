@@ -101,14 +101,15 @@ window.addEventListener('load',async function(){
   contractInstance=await client.getContractInstance(contractSource,{contractAddress});
 
   let myRides=(await contractInstance.methods.getUserRides()).decodedResult;
-  // let allRides=(await contractInstance.methods.getRides()).decodedResult;
-  
-  myRides.map(ride=>{ 
-    rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
-  });
-  // allRides.map(ride=>{ 
+  let allRides=(await contractInstance.methods.getRides()).decodedResult;
+  console.log('My Rides: ', myRides);
+  console.log('All Rides: ', allRides);
+  // myRides.map(ride=>{ 
   //   rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
   // });
+  allRides.map(ride=>{ 
+    rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
+  });
   $("#loader").hide();
 });
 
