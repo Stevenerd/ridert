@@ -123,7 +123,7 @@ async function newRide(){
   let rideid='RA'+(Math.floor(Math.random() * 1001));
 
   if(name.trim()!=""&&email.trim()!=""&&mobile.trim()!=""&&location.trim()!=""&&destination.trim()!=""){
-    await contractInstance.methods.newRide(firstname,surname,email,mobile,location,destination)
+    await contractInstance.methods.newRide(name,email,mobile,location,destination,rideid)
     .then(
       rideDom(name,email,mobile,location,destination,rideid)
     )
