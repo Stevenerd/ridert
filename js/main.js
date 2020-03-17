@@ -109,9 +109,12 @@ window.addEventListener('load',async function(){
   // allRides.map(ride=>{ 
   //   rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
   // });
+  $("#loader").hide();
 });
 
 async function newRide(){
+  $("#loader").show();
+
   let name=document.getElementById("name").value;
   let email=document.getElementById("email").value;
   let mobile=document.getElementById("mobile").value;
@@ -120,9 +123,15 @@ async function newRide(){
   let rideid='RA'+(Math.floor(Math.random() * 1001));
 
   if(name.trim()!=""&&email.trim()!=""&&mobile.trim()!=""&&location.trim()!=""&&destination.trim()!=""){
-    await contractInstance.methods.newRide(firstname,surname,email,mobile,location,destination);
-    // addRideToDom(firstname,surname,email,mobile,location,destination);
+    await contractInstance.methods.newRide(firstname,surname,email,mobile,location,destination)
+    .then(
+      rideDom(name,email,mobile,location,destination,rideid)
+    )
+    .catch(function (error) {
+      console.log(error)
+    });
   }
+  $("#loader").hide();
 }
 
 document.getElementById("submit-ride").addEventListener("click",newRide);
