@@ -27,7 +27,7 @@ contract RideArt =
      abort(err)
 
   entrypoint onlyAdmin() : bool =
-    requirement(state.admin ==ak_cZqVEBCxWVo3Zq3EHGHuW944LyuMiAS8QF6c1GXMNm2FQACPt, "You are not admin to access this page")
+    requirement(state.admin ==ak_2kZrMMEMmSZg6wJbnykv2wXuxifz5rD7gBAshqNXbAa6rDSs5G, "You are not admin to access this page")
     true
 
   stateful entrypoint newRide(name' : string, email' : string, mobile' : int, currentlocation' : string, destination': string, rideid: string)=                                           
