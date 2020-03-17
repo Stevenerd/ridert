@@ -125,12 +125,7 @@ async function newRide(){
 
   if(name.trim()!=""&&email.trim()!=""&&mobile.trim()!=""&&location.trim()!=""&&destination.trim()!=""){
     await contractInstance.methods.newRide(name,email,mobile,location,destination,rideid)
-    .then(
-      rideDom(name,email,mobile,location,destination,rideid)
-    )
-    .catch(function (error) {
-      console.log(error)
-    });
+    rideDom(name,email,mobile,location,destination,rideid)
   }
   $("#loader").hide();
 }
