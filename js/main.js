@@ -1,5 +1,5 @@
 let client=null, contractInstance=null;
-let contractAddress="ct_23k6msDWoPh4PhffzaVApZhF7ULsr58isZbVDom847Yr3ASjmT";
+let contractAddress="ct_S3eXwFHayN5cGshhQCLAPP2iU9dquPrZAjum71Btv9aw1pdaz";
 
 let contractSource=`
 contract RideArt =
