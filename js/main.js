@@ -62,22 +62,22 @@ function rideDom(name,email,mobile,location,destination,rideid){
   cardBody.classList.add("card-body");
 
   let rideIdText=document.createElement("h5");
-  rideIdText.innerText="<b>Ride Id<b>: " + rideid;
+  rideIdText.innerHTML="<b>Ride Id<b>: " + rideid;
 
   let nameText=document.createElement("p");
-  nameText.innerText="<b>Name<b>: " + name;
+  nameText.innerHTML="<b>Name<b>: " + name;
 
   let emailText=document.createElement("p");
-  emailText.innerText="<b>Email<b>: " + email;
+  emailText.innerHTML="<b>Email<b>: " + email;
 
   let mobileText=document.createElement("p");
-  mobileText.innerText="<b>Mobile<b>: " + mobile;
+  mobileText.innerHTML="<b>Mobile<b>: " + mobile;
 
   let locationText=document.createElement("p");
-  locationText.innerText="<b>Location<b>: " + location;
+  locationText.innerHTML="<b>Location<b>: " + location;
 
   let destinationText=document.createElement("p");
-  destinationText.innerText="<b>Destination<b>: " + destination;
+  destinationText.innerHTML="<b>Destination<b>: " + destination;
 
   cardBody
   .appendChild(rideIdText);
@@ -101,15 +101,15 @@ window.addEventListener('load',async function(){
   contractInstance=await client.getContractInstance(contractSource,{contractAddress});
 
   let myRides=(await contractInstance.methods.getUserRides()).decodedResult;
-  let allRides=(await contractInstance.methods.getRides()).decodedResult;
+  // let allRides=(await contractInstance.methods.getRides()).decodedResult;
   console.log('My Rides: ', myRides);
-  console.log('All Rides: ', allRides);
-  // myRides.map(ride=>{ 
-  //   rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
-  // });
-  allRides.map(ride=>{ 
+  // console.log('All Rides: ', allRides);
+  myRides.map(ride=>{ 
     rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
   });
+  // allRides.map(ride=>{ 
+  //   rideDom(ride.name,ride.email,ride.mobile,ride.location,ride.destination,ride.rideid);
+  // });
   $("#loader").hide();
 });
 
